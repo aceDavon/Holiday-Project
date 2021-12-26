@@ -22,8 +22,8 @@ $(document).ready(function (){
         <div class="icons">
             <ul>
                 <li><a href="#" class="menu-links">Account</a></li>
-                <li><img src="./assets/images/shop/search.png" alt="" class="search"></li>
-                <li><img src="./assets/images/shop/bag.png" alt="" class="cart"></li>
+                <li><img width="15px" height="15px" src="./assets/images/shop/search.png" alt="" class="search"></li>
+                <li><img width="15px" height="15px" src="./assets/images/shop/bag.png" alt="" class="cart"></li>
             </ul>
         </div>
     </nav>
