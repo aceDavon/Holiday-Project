@@ -505,6 +505,13 @@ html {
         margin: 25px auto;
         padding: 25px 0 25px 265px;
     }
+
+    .social-icons img
+    .icons img,
+    .hamburger img {
+        width: 15px;
+        height: 15px;
+    }
     
     .top-grid-col {
         width: 100%;
@@ -799,11 +806,18 @@ html {
         list-style-type: none; 
     }
 
+    .social-icons img,
+    .icons img,
+    .hamburger img {
+        width: 15px;
+        height: 15px;
+    }
+
     .nav-items {
         width: 80%;
     }
     .hamburger {
-        padding-left: 100px;
+        padding-left: 25px;
     }
 
     .single-grid-img {
