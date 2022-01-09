@@ -172,6 +172,16 @@ html {
     cursor: pointer;
 }
 
+.article-btn:hover {
+    padding: 12px 25px;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: white;
+    border: 2px solid black;
+    margin-top: 12px;
+    cursor: pointer;
+}
 .about {
     font-size: 53px;
     font-weight: 900;
@@ -188,6 +198,16 @@ html {
     cursor: pointer;
 }
 
+.article-2-btn:hover {
+    padding: 12px 25px;
+    color: black;
+    text-transform: uppercase;
+    background-color: white;
+    border: 2px solid black;
+    margin: 12px 0 0 50px;
+    cursor: pointer;
+}
+
 .article-btn-inverted {
     padding: 12px 25px;
     color: black;
@@ -195,6 +215,17 @@ html {
     text-transform: uppercase;
     font-weight: 600;
     border: 2px solid black;
+    margin-top: 12px;
+    cursor: pointer;
+}
+
+.article-btn-inverted:hover {
+    padding: 12px 25px;
+    color: white;
+    background-color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    border: 2px solid white;
     margin-top: 12px;
     cursor: pointer;
 }
@@ -499,12 +530,6 @@ html {
 }
 
 @media screen and (max-width: 1327px) {
-    .top-grid {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 25px auto;
-        padding: 25px 0 25px 265px;
-    }
 
     .social-icons img
     .icons img,
@@ -512,21 +537,28 @@ html {
         width: 15px;
         height: 15px;
     }
-    
+
+    .top-grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 25px auto;
+        padding: 25px 3px;
+    }
+
     .top-grid-col {
         width: 100%;
-        flex-basis: 400px;
+        flex-basis: 200px;
         flex-grow: 1;
-        max-width: 580px;
+        max-width: 350px;
         padding: 0 10px;
+        margin: auto;
     }
-    
+
     .top-grid-col img {
-        width: 580px;
-        height: 650px;
+        width: 350px;
+        height: 380px;
         object-fit: cover;
     }
-    
     .top-grid-col p {
         padding: 0 25px;
         font-weight: bold;
@@ -734,7 +766,7 @@ html {
     .footer {
         display: flex;
         padding: 20px;
-        gap: 80px;
+        gap: 20px;
         align-items: center;
     }
     
@@ -814,10 +846,11 @@ html {
     }
 
     .nav-items {
-        width: 80%;
+        width: 50%;
+        justify-content: space-between;
     }
     .hamburger {
-        padding-left: 25px;
+        padding-left: 5px;
     }
 
     .single-grid-img {
@@ -885,7 +918,7 @@ html {
         padding: 5px 15px;
     }
 
-    .top-grid {
+    /* .top-grid {
         display: block;
     }
     
@@ -903,7 +936,7 @@ html {
     
     .top-grid-col p {
         font-weight: bold;
-    }
+    } */
 
     .signature p {
         text-align: left;
@@ -975,4 +1008,56 @@ html {
         text-decoration: none;
         text-transform: uppercase;
     } 
+}
+
+@media screen and (max-width: 883px) {
+    .top-grid-col {
+        width: 100%;
+        flex-basis: 400px;
+        flex-grow: 1;
+        max-width: 520px;
+        padding: 0 5px;
+    }
+}
+
+@media screen and (max-width: 759px) {
+    .top-grid {
+        display: block;
+        margin: 25px auto;
+        padding: 25px 3px;
+    }
+
+    .top-grid-col {
+        width: 50%;
+        padding: 0 10px;
+        margin: auto;
+    }
+
+    .top-grid-col img {
+        width: 350px;
+        height: 380px;
+        object-fit: cover;
+    }
+    .top-grid-col p {
+        padding: 0 25px;
+        font-weight: bold;
+    }
+
+    .flex-section {
+        padding: 10px 5px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 70%;
+        margin: auto;
+    }
+
+    .single-grid {
+        display: block;
+        padding: 60px 15px;
+    }
+
+    .single-grid-img {
+        width: 65%;
+        height: min-content;
+    }
 }

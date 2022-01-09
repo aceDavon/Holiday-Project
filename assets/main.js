@@ -96,12 +96,11 @@ $(document).ready(function (){
     $('.topNav').append(header);
     $('.mobileNav').append(mobile_menu);
     $('.footer').append(footer);
-    
-    // $('.menu-links').mouseover(function () { 
-    // $('.menu-links').classAdd('menu-links-animate').mouseOut(function(){
-    //     $('.menu-links').classRemove('menu-links-animate')
-    // }, 2500)
-// });
+}).scroll(function(){
+    $( this ).animate({
+        width: 'grow',
+        height: 'grow'
+    })
 });
 
 
