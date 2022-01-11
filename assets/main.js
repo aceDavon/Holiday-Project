@@ -14,8 +14,8 @@ $(document).ready(function (){
                     <li><a href="#" class="menu-links">Appointments</a></li>
                     <li><a href="#" class="menu-links">Enquiries</a></li>
                     <li><a href="#" class="menu-links">Blog</a></li>
-                    <li><a href="./stores.html#" class="menu-links">Our Stores</a></li>
-                    <li><a href="#" class="menu-links"></a>Stockists</a></li>
+                    <li><a href="./shop.html#" class="menu-links">Our Shop</a></li>
+                    <li><a href="./login.html" class="menu-links">login</a></li>
                 </ul>
             </div>
         </div>
@@ -23,7 +23,7 @@ $(document).ready(function (){
             <ul>
                 <li><a href="#" class="menu-links">Account</a></li>
                 <li><img width="15px" height="15px" src="./assets/images/shop/search.png" alt="" class="search"></li>
-                <li><img width="15px" height="15px" src="./assets/images/shop/bag.png" alt="" class="cart"></li>
+                <li><img width="15px" height="15px" src="./assets/images/shop/bag.png" alt="" class="bag"></li>
             </ul>
         </div>
     </nav>
@@ -44,7 +44,7 @@ $(document).ready(function (){
             <ul>
                 <li><a href="#" class="menu-links">Account</a></li>
                 <li><img width="15px" height="15px" src="./assets/images/shop/search.png" alt="" class="search"></li>
-                <li><img width="15px" height="15px" src="./assets/images/shop/bag.png"  alt="" class="cart"></li>
+                <li><img width="15px" height="15px" src="./assets/images/shop/bag.png"  alt="" class="bag"></li>
             </ul>
         </div>
     </nav>
@@ -92,26 +92,64 @@ $(document).ready(function (){
                 </ul>
             </div>
     </div>
+    `;
+    let cart = 
     `
+        <div class="cart-header">
+            <p class="cart-items-count">
+                bag items(0)
+            </p>
+            <a class="cart-close-btn">close</a>
+        </div>
+        <div class="cart-body">
+            <p class="cart-items-info">
+                Your bag is empty
+            </p>
+            
+            <button class="article-btn">go to the shop</button>
+        </div>
+    `;
+
     $('.topNav').append(header);
+    $('.cart').append(cart);
     $('.mobileNav').append(mobile_menu);
     $('.footer').append(footer);
-}).scroll(function(){
-    $( this ).animate({
-        width: 'grow',
-        height: 'grow'
+
+    $('.menu-links').hover(function () { 
+        $('.menu-links').slideUp('slow');
+    }, function(){
+        $('.menu-links').slideDown('slow');
+    });
+
+   $('.hamburger img').click(function(){
+       $('.top-menu ul').toggleClass('stick');
+       $('.top-menu ul').toggle();
+   })
+
+   $('.bag').click(function(){
+       $('.cart').toggleClass('modal');
+       $('.cart').toggle()
     })
+
+    $('.close-btn').click(function(){
+        $('.cart').toggle();
+       })
 });
 
-
+// Fix navigator bar to top
 
 $(document).scrollTop( function (){
     var offset = $('.topNav').offset()
     var top = offset.top
     if(scrollY >= top){
-        $('.topNav').addClass('sticky')
+        $('.topNav').addClass('sticky');
+        $('.mobileNav').addClass('sticky');
+        $('.top-menu ul').toggleClass('stick');
+        $('.top-menu ul').toggle();
     }else{
-        $('.topNav').removeClass('sticky')
+        $('.topNav').removeClass('sticky');
+        $('.mobileNav').removeClass('sticky');
     }
-    
 });
+
+// Animate menu links on mouseover

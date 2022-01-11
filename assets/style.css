@@ -31,6 +31,15 @@ html {
     top: 0;
     width: 100%;
     background-color: #fff;
+    z-index: 10;
+  }
+
+  .stick {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
   }
 
 .logo-text {
@@ -43,15 +52,21 @@ html {
     text-decoration: none;
 }
 
-.menu-links-animate {
-    color: black;
-    text-decoration: none;
-    animation: goUp 8s;
+.top-grid-col img:hover,
+.shop-col img:hover,
+.insta-col img:hover,
+.single-grid-img:hover,
+.flex-col img:hover {
+    animation: grow 2s 1;
 }
 
-@keyframes goUp {
-    from {top: 0px}
-    to {top: 1.8px;}
+@keyframes grow {
+    0% {
+        transform: scale(none, 1.1);
+    }
+    50% {
+        transform: scale(.052);
+    }
 }
 
 .banner {
@@ -88,6 +103,7 @@ html {
     height: 550px;
     object-fit: cover;
 }
+ 
 
 .banner-description {
     position: absolute;
@@ -302,6 +318,46 @@ html {
     padding: 10px 15px;
     display: flex;
     flex-wrap: wrap;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+}
+
+.cart {
+    display: none;
+    position: absolute;
+    top: 80%;
+    right: 1px;
+    width: 450px;
+    height: min-content;
+    z-index: 1;
+}
+
+.cart-header {
+    background-color: white;
+}
+
+.cart-body {
+    background-color: #dedede;
+    padding: 10px 30px;
+}
+
+.cart-items-count {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.cart-close-btn {
+    text-decoration: none;
+    color: black;
+}
+
+.cart.modal {
+    display: block;
 }
 
 .flex-col {
@@ -690,6 +746,14 @@ html {
         justify-content: space-between;
     }
 
+    .top-menu ul {
+        display: none;
+    }
+
+    .top-menu ul.stick {
+        display: block;
+    }
+
     .nav-items {
         width: 55%;
         padding: 15px 45px 15px 25px;
@@ -830,13 +894,13 @@ html {
 }
 
 @media screen and (max-width: 983px) {
-    .mobileNav {
+    /* .mobileNav {
         width: 100%;
         display: flex;
         gap: 2px;
         align-items: center;
         list-style-type: none; 
-    }
+    } */
 
     .social-icons img,
     .icons img,
