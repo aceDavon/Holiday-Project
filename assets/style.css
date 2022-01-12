@@ -83,6 +83,7 @@ html {
 .shop-col {
     width: 100%;
     padding: 5px 10px;
+    overflow: hidden;
 }
 
 .shop-col img {
@@ -300,6 +301,7 @@ html {
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
+    overflow: hidden;
 }
 
 .top-grid-col p {
@@ -346,7 +348,7 @@ html {
 
 .cart {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 80%;
     right: 1px;
     width: 450px;
@@ -415,6 +417,7 @@ html {
     grid-template-columns: 350px 300px;
     justify-content: space-between;
     padding: 60px 35px;
+    overflow: hidden;
 }
 
 .single-grid-img {
@@ -478,6 +481,7 @@ html {
     flex-basis: 80px;
     flex-grow: 1;
     padding: 25px 3px;
+    overflow: hidden;
 }
 
 .social-posts{
