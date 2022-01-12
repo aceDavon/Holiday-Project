@@ -134,6 +134,20 @@ $(document).ready(function (){
     $('.close-btn').click(function(){
         $('.cart').toggle();
        })
+
+       let images = $('.shop-col, .insta-col, .single-grid, .flex-col' );
+
+       $(images).each(function(i, img){
+        
+           $(img)
+            .mouseover(function(){
+                $(this).children('img').addClass('zoom')
+            })
+            .mouseout(function(){
+                $(this).children('img').removeClass('zoom')
+            })
+       })
+
 });
 
 // Fix navigator bar to top

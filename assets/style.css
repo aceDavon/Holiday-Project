@@ -52,21 +52,25 @@ html {
     text-decoration: none;
 }
 
-.top-grid-col img:hover,
-.shop-col img:hover,
-.insta-col img:hover,
-.single-grid-img:hover,
-.flex-col img:hover {
-    animation: grow 2s 1;
+/* .top-grid-col img.zoom,
+.shop-col img.zoom,
+.insta-col img.zoom,
+.single-grid-img.zoom, */
+.flex-img .zoom {
+    transition: transform 0.15s ease;
 }
 
-@keyframes grow {
+/* @keyframes grow {
     0% {
-        transform: scale(none, 1.1);
+        transition: .25s ease-in;
     }
     50% {
-        transform: scale(.052);
+        transition: .30s ease-in;
     }
+} */
+
+.zoom {
+    transition: scale(0.25s);
 }
 
 .banner {
@@ -277,12 +281,42 @@ html {
     flex-grow: 1;
     max-width: 380px;
     padding: 0 10px;
+    position: relative;
+    overflow: hidden;
 }
 
 .top-grid-col img {
     width: 380px;
     height: 380px;
     object-fit: cover;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: .25s ease-out;
+    background-color: rgb(248, 123, 123);
+}
+
+.text-overlay:hover {
+    opacity: 1;
+}
+
+.overlay-text {
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    width: 50%;
+    top: 45%;
+    left: 25%;
+    position: absolute;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
 }
 
 .top-grid-col p {
@@ -365,12 +399,14 @@ html {
     flex-grow: 1;
     max-width: 220px;
     padding: 0 5px;
+    position: relative;
 }
 
-.flex-img {
+.flex-col img {
     width: 100%;
     height: 350px;
     object-fit: cover;
+    transition: 0.25s ease;
 }
 
 .product_name {
