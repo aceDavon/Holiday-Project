@@ -409,9 +409,9 @@ html {
 
 /* use instead of jquery */
 
-/* .flex-col:hover .flex-img {
+.flex-col:hover .flex-img {
     transform: scale(1.02);
-} */
+}
 
 .product_name {
     font-weight: bold;
@@ -499,7 +499,83 @@ html {
     width: 200px;
     height: 200px;
     object-fit: cover;
+    transition: transform 0.25s ease;
 }
+
+.insta-col:hover .social-posts {
+    transform: scale(1.02);
+}
+
+.product-top-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-text {
+    width: 50%;
+    padding: 85px 25px;
+}
+
+.product-descript {
+    text-align: left;
+    line-height: 35px;
+}
+
+.product-sizes {
+    display: block;
+}
+
+.tablinks,
+.tablinks-inverted {
+    color: black;
+    text-decoration: none;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: #dedede;
+}
+
+
+.tablinks-inverted {
+    color: black;
+}
+
+.product-sizes a {
+    color: black;
+}
+
+.product1-img,
+.product2-img {
+    width: 50%;
+    padding: 0 5px;
+}
+
+.product1-img {
+    margin-bottom: 220px;
+}
+
+.product1-img img,
+.product2-img img {
+    width: 650px;
+    height: 750px;
+    object-fit: cover;
+}
+
+.product-title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 35px;
+    padding: 8px 0;
+}
+
+.customer-care {
+    color: #dedede;
+    cursor: pointer;
+}
+
+.customer-care:hover {
+    color: #000;
+}
+
 .dates {
     width: 20%;
     margin: 12px auto;

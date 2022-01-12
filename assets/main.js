@@ -118,7 +118,7 @@ $(document).ready(function (){
     let fastLink = $('.motion-links li');
 
     $(fastLink).each(function(i, link){
-        $(link).hover(function(){
+        $(link).children('a').hover(function(){
             $(this).slideUp('slow').stop(true, true);
         }, function(){
             $(this).slideDown('slow');
