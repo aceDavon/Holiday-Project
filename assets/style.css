@@ -537,6 +537,7 @@ html {
 
 .tablinks-inverted {
     color: black;
+    font-weight: bold;
 }
 
 .product-sizes a {

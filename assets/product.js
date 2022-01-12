@@ -8,7 +8,7 @@ $(document).ready(function () {
                 
                 <div class="shop-col">
                     <img src="${data.image}" alt="">
-                    <p class="">${data.title}</p>
+                    <p class="product_name"><a href="./product.html" class="tablinks-inverted">${data.title}</a></p>
                     <p class="price">£${data.price}</p>
                 </div>
 
@@ -30,7 +30,7 @@ $(document).ready(function () {
                             <a href="#" class="overlay-text">discover the collection</a>
                         </div>
                         <img src="${data.image}" alt="">
-                        <p>${data.title}</p>
+                        <p class="product_name"><a href="./product.html" class="tablinks-inverted">${data.title}</a></p>
                     </div>
     
                     `;
@@ -47,7 +47,7 @@ $(document).ready(function () {
                     `
                     <div class="flex-col">
                         <img src="${data.image}" class="flex-img">
-                        <p class="product_name">${data.title}</p>
+                        <p class="product_name"><a href="./product.html" class="tablinks-inverted">${data.title}</a></p>
                         <p class="price">£${data.price}</p>
                     </div>
                     `;
