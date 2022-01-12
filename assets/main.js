@@ -7,7 +7,7 @@ $(document).ready(function (){
                 <h6 class="logo-text"><a href="./index.html" class="menu-links">Sassi Holford</a></h6>
             </div>
             <div class="top-menu">
-                <ul>
+                <ul class="motion-links">
                     <li><a href="" class="menu-links">About</a></li>
                     <li><a href="#" class="menu-links">Bridal</a></li>
                     <li><a href="#" class="menu-links">Fashion</a></li>
@@ -115,11 +115,21 @@ $(document).ready(function (){
     $('.mobileNav').append(mobile_menu);
     $('.footer').append(footer);
 
-    $('.menu-links').hover(function () { 
-        $('.menu-links').slideUp('slow');
-    }, function(){
-        $('.menu-links').slideDown('slow');
-    });
+    let fastLink = $('.motion-links li');
+
+    $(fastLink).each(function(i, link){
+        $(link).hover(function(){
+            $(this).slideUp('slow').stop(true, true);
+        }, function(){
+            $(this).slideDown('slow');
+        });
+    })
+
+    // $('.menu-links').hover(function () { 
+    //     $('.menu-links').slideUp('slow');
+    // }, function(){
+    //     $('.menu-links').slideDown('slow');
+    // });
 
    $('.hamburger img').click(function(){
        $('.top-menu ul').toggleClass('stick');
