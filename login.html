@@ -12,31 +12,39 @@
     <div class="mobileNav"></div>
     <div class="cart"></div>
     <div class="form-group">
-        <div class="login">
+        <div class="login" id="login">
             <form action="">
                 <h1>Login</h1>
                 <label for="username">Email*</label>
-                <input type="text" class="form-inputs">
+                <input type="text" class="form-inputs" id="email">
+                <span class="first-login"></span>
+                <span class="email-error"></span>
                 <label for="password">Password*</label>
-                <input type="password" id="">
+                <input type="password" id="psw">
+                <span class="psw-error"></span>
                 <small><a href="#" class="password-link">Lost Your Password?</a></small>
                 <div class="form-bottom">
                     <input type="checkbox" id="">
-                    <button class="form-btn">Login</button>
+                    <button type="button" class="form-btn" id="loginBtn">Login</button>
                 </div>
             </form>
         </div>
         <div class="register">
-            <form action="">
+            <form action="#" method="post">
                 <h1>Create Account</h1>
+                <label for="email">Name</label>
+                <input type="text" id="createName">
                 <label for="email">Email Address</label>
-                <input type="email" id="">
+                <input type="email" id="createEmail">
+                <span class="createEmail"></span>
+                <label for="email">Phone</label>
+                <input type="tel" id="createPhone">
                 <label for="password">Password</label>
-                <input type="password" id="">
+                <input type="password" id="createPsw">
                 <small>Your personal data will be used to support your experience 
                     throughout this website, to manage access to your account, 
                     and for other purposes described in our privacy policy.</small>
-                <button class="form-btn">Register</button>
+                <button type="button" class="form-btn" id="createBtn">Register</button>
             </form>
         </div>
     </div>
@@ -45,4 +53,5 @@
 </body>
 <script src="./assets/jquery.js"></script>
 <script src="./assets/main.js"></script>
+<script src="./assets/users.js"></script>
 </html>

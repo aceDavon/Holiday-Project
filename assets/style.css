@@ -534,6 +534,20 @@ html {
     color: #dedede;
 }
 
+.createEmail,
+.first-login,
+.email-error,
+.psw-error {
+    font-size: small;
+    display: block;
+    color: red;
+    padding: 5px;
+    text-transform: capitalize;
+}
+
+.first-login {
+    color: green;
+}
 
 .tablinks-inverted {
     color: black;

@@ -1,85 +1,98 @@
 $(document).ready(function () {
+
+    let url = window.location.href;
+    let urlData = new URL(url).searchParams;
+    let id = urlData.get('id');
+
     $.ajax({
-        url: "https://fakestoreapi.com/products",
+        url: "http://159.65.21.42:9000/products",
         method: "GET",
-        success: function(response) {
-            $(response).each(function(i, data){
+        success: function(data) {
+            let i = 0;
+            while(i <= 29 ) {
                 let packs = `
                 
-                <div class="shop-col">
-                    <img src="${data.image}" alt="">
-                    <p class="product_name"><a href="./product.html" class="tablinks-inverted">${data.title}</a></p>
-                    <p class="price">£${data.price}</p>
-                </div>
+                 <div class="shop-col">
+                     <img src="${data[i].image}" alt="">
+                     <p class="product_name"><a href="./product.html?id=${data[i]._id}" class="tablinks-inverted">${data.name}</a></p>
+                     <p class="price">£${data[i].price}</p>
+                 </div>
 
                 `;
-                $('.shop-grid').append(packs)
-            });
+                $('.shop-grid').append(packs);
+                i++;
+            }
+        },
+        Error: function(err) {
+            console.log(err);
         }
     });
 
     $.ajax({
-            url: "https://fakestoreapi.com/products?limit=3",
+            url: "http://159.65.21.42:9000/products",
             method: "GET",
-            success: function(response) {
-                $(response).each(function(i, data){
+            success: function(data) {
+                    let i = 0;
+                    while(i<= 2) {
                     let topGrid = `
                     
                     <div class="top-grid-col">
                         <div class="text-overlay">
                             <a href="#" class="overlay-text">discover the collection</a>
                         </div>
-                        <img src="${data.image}" alt="">
-                        <p class="product_name"><a href="./product.html" class="tablinks-inverted">${data.title}</a></p>
-                    </div>
-    
+                        <img src="${data[i].image}" alt="">
+                        <p class="product_name"><a href="./product.html?id=${data[i]._id}" 
+                        class="tablinks-inverted">${data[i].name}</a></p>
+                        </div>
                     `;
-                    $('.top-grid').append(topGrid)
-                });
-            } 
-        });
+                    $('.top-grid').append(topGrid);
+                    i++;
+                    }
+                }    
+            });
         $.ajax({
-            url: "https://fakestoreapi.com/products?limit=6",
+            url: "http://159.65.21.42:9000/products",
             method: "GET",
-            success: function(response) {
-                $(response).each(function(i, data){
-                    let arrivalFlex = 
-                    `
-                    <div class="flex-col">
-                        <img src="${data.image}" class="flex-img">
-                        <p class="product_name"><a href="./product.html" class="tablinks-inverted">${data.title}</a></p>
-                        <p class="price">£${data.price}</p>
-                    </div>
-                    `;
-                    $('.flex-section').append(arrivalFlex);
-                });
-            } 
+            success: function(data) {
+                    let i = 0;
+                    while(i <= 5) {
+                    let arrivalFlex = `
+                            <div class="flex-col">
+                                <img src="${data[i].image}" class="flex-img">
+                                <p class="product_name"><a href="./product.html?id=${data[i]._id}" 
+                                class="tablinks-inverted">${data[i].name}</a></p>
+                                <p class="price">£${data[i].price}</p>
+                            </div>
+                        `;
+                        $('.flex-section').append(arrivalFlex);
+                        i++;
+                    }
+                } 
         });
 
         $.ajax({
-            url: "https://fakestoreapi.com/products?limit=6",
+            url: "http://159.65.21.42:9000/products",
             method: "GET",
-            success: function(response) {
-                $(response).each(function(i, data){
-                    console.log(data)
+            success: function(data) {
+                let i= 0;
+                while(i <= 5) {
                     let instaPost = `
-                    
-                    <div class="insta-col">
-                        <img src="${data.image}" alt="instagram posts" class="social-posts">
-                    </div>
-    
+                        <div class="insta-col">
+                            <img src="${data[i].image}" alt="instagram posts" class="social-posts">
+                        </div>
                     `;
-                    $('.instagram-posts').append(instaPost)
-                });
+                    $('.instagram-posts').append(instaPost);
+                    i++;
+                }
             } 
         });
 
+        
         $.ajax({
-            url: "https://fakestoreapi.com/products?limit=1",
+            url: `http://159.65.21.42:9000/product/${id}`,
             method: "GET",
-            success: function(response) {
-                $(response).each(function(i, data){
-                    console.log(data)
+            success: function(data) {
+                    // console.log(data)
                     let product = `
                     
                     <div class="product-text">
@@ -88,7 +101,7 @@ $(document).ready(function () {
                         <a href="#" class="tablinks-inverted">seperated</a>
                     </div>
                     <div class="product-name">
-                        <p class="product-title">${data.title}</p>
+                        <p class="product-title">${data.name}</p>
                         <p class="price">£${data.price}</p>
                     </div>
                     <div class="product-descript">
@@ -117,7 +130,7 @@ $(document).ready(function () {
                 </div>
                 <div class="product-img">
                     <div class="product1-img">
-                        <img src="./assets/images/SASSI-HOLFORD-RTW-SS21-AQUAREMARINE-PEARL-DUNSTER-TOP-DUNSTER-SHORTS-918x1366.jpg" alt="">
+                        <img src=${data.image} alt="">
                     </div>
                     <div class="product2-img">
                         <img src="${data.image}" alt="">
@@ -126,9 +139,8 @@ $(document).ready(function () {
             </div>
     
                     `;
-                    $('.product-top-section').append(product)
-                });
-            } 
+                    $('.product-top-section').append(product);
+            }
         });
     
-});
+})

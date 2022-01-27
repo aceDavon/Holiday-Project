@@ -1,6 +1,5 @@
 $(document).ready(function (){
-    let header = 
-    `
+    let header =  `
     <nav class="top-nav">
         <div class="nav-menu">
             <div class="logo">
@@ -29,8 +28,7 @@ $(document).ready(function (){
     </nav>
     `
 
-    let  mobile_menu = 
-    `
+    let  mobile_menu = `
     <nav class="mobile-nav">
         <div class="nav-items">
             <div class="hamburger">
@@ -50,8 +48,7 @@ $(document).ready(function (){
     </nav>
     `
     
-    let footer =
-    `
+    let footer = `
     <div class="footer">
         <div class="copyright">
             <label for="copyright">&copy; 2021 sassi holford</label>
@@ -93,8 +90,7 @@ $(document).ready(function (){
             </div>
     </div>
     `;
-    let cart = 
-    `
+    let cart = `
         <div class="cart-header">
             <p class="cart-items-count">
                 bag items(0)
