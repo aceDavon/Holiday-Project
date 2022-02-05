@@ -1,10 +1,13 @@
 $(document).ready(function () {
-    let newEmail = $('#createEmail');
     let newPsw = $('#createPsw');
     let obj = {}
 
     $('#createBtn').click(function() { 
-        
+            let newEmail = $('#createEmail');
+            let newname = $('#createName');
+            let newPhone = $('#createPhone');
+            let newPsw = $('#createPsw');
+
         if(newEmail.val() == ""){
             $('.createEmail').html('Please enter a valid email');
         }else{
@@ -14,11 +17,9 @@ $(document).ready(function () {
             // $('.createEmail').html("");
             // $('#createEmail').val("");
             // $('#createPsw').val("");
-            let newEmail = $('#createEmail');
-            let newname = $('#createName');
-            let newPhone = $('#createPhone');
-            let newPsw = $('#createPsw');
-                $.ajax({
+            
+            console.log(newEmail.val());
+    $.ajax({
                     url: "http://159.65.21.42:9000/register",
                     method: "POST",
                     data: JSON.stringify({
@@ -33,13 +34,13 @@ $(document).ready(function () {
                         $('.first-login')
                             .html(response);
                             console.log('done');
+                            window.location.href="./login.html#login";
                     },
                     error: function(err) {  
-                        alert('could not create product')    
-                        console.log(err)
+                        alert(err);   
+                        console.log(err);
                     }
-                })
-            window.location.href="./login.html#login";
+        })
             
         } 
     });

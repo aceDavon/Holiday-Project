@@ -3,37 +3,43 @@ $(document).ready(function () {
     let url = window.location.href;
     let urlData = new URL(url).searchParams;
     let id = urlData.get('id');
+    let content = $('.cart');
 
     $.ajax({
-        url: "http://159.65.21.42:9000/products",
+        url: `http://159.65.21.42:9000/products`,
         method: "GET",
-        success: function(data) {
-            let i = 0;
-            while(i <= 29 ) {
-                let packs = `
-                
-                 <div class="shop-col">
-                     <img src="${data[i].image}" alt="">
-                     <p class="product_name"><a href="./product.html?id=${data[i]._id}" class="tablinks-inverted">${data.name}</a></p>
-                     <p class="price">£${data[i].price}</p>
-                 </div>
-
-                `;
-                $('.shop-grid').append(packs);
-                i++;
-            }
+        success: (Response) => {
+            displayProduct(Response);
         },
-        Error: function(err) {
+        error: (err) => {
             console.log(err);
         }
     });
 
+    function displayProduct(data) {
+        let markUp = "";
+        let i = 0;
+        while(i <= 29) {
+            markUp +=`
+                <div class="shop-col">
+                    <img src="${data[i].image}" alt="">
+                    <p class="product_name"><a href="./product.html?id=${data[i]._id}" 
+                    class="tablinks-inverted">${data.name}</a></p>
+                    <p class="price">£${data[i].price}</p>
+                </div>
+            `;
+            $('.shop-grid').append(markUp);
+            i++;
+        }
+    }
+
+    //Other product display boxes
     $.ajax({
             url: "http://159.65.21.42:9000/products",
             method: "GET",
             success: function(data) {
                     let i = 0;
-                    while(i<= 2) {
+                    while(i <= 2) {
                     let topGrid = `
                     
                     <div class="top-grid-col">
@@ -49,8 +55,8 @@ $(document).ready(function () {
                     i++;
                     }
                 }    
-            });
-        $.ajax({
+        });
+    $.ajax({
             url: "http://159.65.21.42:9000/products",
             method: "GET",
             success: function(data) {
@@ -70,7 +76,7 @@ $(document).ready(function () {
                 } 
         });
 
-        $.ajax({
+    $.ajax({
             url: "http://159.65.21.42:9000/products",
             method: "GET",
             success: function(data) {
@@ -87,60 +93,112 @@ $(document).ready(function () {
             } 
         });
 
-        
-        $.ajax({
-            url: `http://159.65.21.42:9000/product/${id}`,
-            method: "GET",
-            success: function(data) {
-                    // console.log(data)
-                    let product = `
-                    
-                    <div class="product-text">
-                    <div class="tablinks-col">
-                        <a href="#" class="tablinks">shop /</a>
-                        <a href="#" class="tablinks-inverted">seperated</a>
-                    </div>
-                    <div class="product-name">
-                        <p class="product-title">${data.name}</p>
-                        <p class="price">£${data.price}</p>
-                    </div>
-                    <div class="product-descript">
-                        <article>
-                            ${data.description}
+    $.ajax({
+        url: `http://159.65.21.42:9000/products?id=${id}`,
+        method: "GET",
+        success: function (data) {
+            let product = "";
+                let response = data.find(x => x._id == id);
+                console.log(response)
+                product += `
+                 <div class="product-text">
+                 <div class="tablinks-col">
+                     <a href="#" class="tablinks">shop /</a>
+                     <a href="#" class="tablinks-inverted">seperated<a>
+                     </div>
+                     <div class="product-name">
+                         <p class="product-title">${response.name}</p>
+                         <p class="price">£${response.price}</p>
+                     </div>
+                     <div class="product-descript">
+                         <article>
+                             ${response.description}
+    
+                         <div class="product-sizes">
+                             <a href="#" class="tablinks">34</a>
+                             <a href="#" class="tablinks">36</a>
+                                         <a href="#" class="tablinks">38<a>
+                                             <a href="#" class="tablinks">40<a>
+                                     <a href="#" class="tablinks">42</a>
+                                             </div>
+                                             </article>
+                                             <button type="button"class="article-btn-inverted" id="cartBtn" data-productId=${response._id}>add to cart</button>
                             
-                        <div class="product-sizes">
-                            <a href="#" class="tablinks">34</a>
-                            <a href="#" class="tablinks">36</a>
-                            <a href="#" class="tablinks">38</a>
-                            <a href="#" class="tablinks">40</a>
-                            <a href="#" class="tablinks">42</a>
-                        </div>
-                        </article>
-                        <button class="article-btn-inverted" disabled="disabled">add to cart</button>
-        
-                        <p class="customer-care">
-                            SIZE HELP +
-                            <br>
-                            DELIVERIES & RETURNS +
-                            <br>
-                            ENQUIRIES +
-                        </p>
-                        <button class="article-btn-inverted">pin this</button>
-                    </div>
-                </div>
-                <div class="product-img">
-                    <div class="product1-img">
-                        <img src=${data.image} alt="">
-                    </div>
-                    <div class="product2-img">
-                        <img src="${data.image}" alt="">
-                    </div>
-                </div>
-            </div>
+                                             <p class="customer-care">
+                                                 SIZE HELP +
+                                                 <br>
+                                                 DELIVERIES & RETURNS +
+                                                 <br>
+                                                 ENQUIRIES +
+                                             </p>
+                                             <button class="article-btn-inverted">pin this</button>
+                                         </div>
+                                     </div>
+                                     <div class="product-img">
+                                         <div class="product1-img">
+                                             <img src=${response.image} alt="">
+                                         </div>
+                                         <div class="product2-img">
+                                             <img src="${response.image}" alt="">
+                                         </div>
+                                     </div>
+                                 </div>
+                `;
+            $('.product-top-section').append(product);
+            bindEvent(response)
+        },
+        error: (err) => {
+            $('.load-fail').html('Could\'nt get product details, try again please', err);
+        }
+    });
+
+    let cart = localStorage.getItem("cart");
+    let arr = [];
+    let cartObj = {};
+
+    function bindEvent(response) {
+        $('#cartBtn').click( () => {
+            let item = $('#cartBtn').attr('data-productId');
+            let cartItem = "";
+            //if the cart is not empty
+            if(cart) {
+                arr = JSON.parse(cart);
+                for(let i = 0; i= 0; i++) {
+                    cartObj = arr._id;
     
-                    `;
-                    $('.product-top-section').append(product);
+                    arr.push(cartObj);
+                        localStorage.setItem("cart", JSON.stringify(arr))
+                }
+            }else {
+                cartObj = response;
+                arr = [cartObj];
+                 localStorage.setItem("cart", JSON.stringify(arr));
             }
+            displayCart(arr);
         });
-    
+    }
+
+    function displayCart(response) {
+        
+        let i = 0;
+        while(i < 1) {
+            let cartItem = `
+                    <div class="cart-row">
+                    <div class="cart-items">
+                        <img src=${response[i].image} alt="product_image" class="cart-img">
+                        <span class="cart-item-name">${response[i].name}</span>
+                    </div>
+                    <span class="price">${response[i].price}</span>
+                    <div class="cart-items-stats">
+                        <input type="number" class="product-qty" value="2">
+                        <button class="removebtn">remove</button>
+                    </div>
+                    </div>
+                `;
+                $('.cart-row-inner').append(cartItem);
+                i++;
+        }
+        
+    }
+
 })
