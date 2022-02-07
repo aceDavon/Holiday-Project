@@ -357,7 +357,8 @@ html {
     padding: 10px 25px;
 }
 
-.empty-cart {
+.cart-dropped,
+.epmty-cart {
     display: none;
 }
 
@@ -403,7 +404,8 @@ html {
     background-color: #dedede;
 }
 
-.cart-row {
+.cart-row,
+#removable {
     display: flex;
     align-items: center;
     font-size: small;

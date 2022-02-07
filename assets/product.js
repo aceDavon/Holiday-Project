@@ -99,7 +99,6 @@ $(document).ready(function () {
         success: function (data) {
             let product = "";
                 let response = data.find(x => x._id == id);
-                console.log(response)
                 product += `
                  <div class="product-text">
                  <div class="tablinks-col">
@@ -155,6 +154,7 @@ $(document).ready(function () {
     let cart = localStorage.getItem("cart");
     let arr = [];
     let cartObj = {};
+    // console.log(cart);
 
     function bindEvent(response) {
         $('#cartBtn').click( () => {
@@ -163,12 +163,10 @@ $(document).ready(function () {
             //if the cart is not empty
             if(cart) {
                 arr = JSON.parse(cart);
-                for(let i = 0; i= 0; i++) {
-                    cartObj = arr._id;
-    
+                    cartObj = arr.find(x=>x._id == id);
                     arr.push(cartObj);
-                        localStorage.setItem("cart", JSON.stringify(arr))
-                }
+                        localStorage.setItem("cart", JSON.stringify(arr));
+                        $('.cart-body').toggleClass('cart-dropped');
             }else {
                 cartObj = response;
                 arr = [cartObj];
@@ -179,26 +177,56 @@ $(document).ready(function () {
     }
 
     function displayCart(response) {
+        console.log(response.length);
+        $('.counter').html(response.length);
         
         let i = 0;
-        while(i < 1) {
+        while(i < response.length -1) {
+            console.log(response[i].name);
             let cartItem = `
-                    <div class="cart-row">
-                    <div class="cart-items">
-                        <img src=${response[i].image} alt="product_image" class="cart-img">
-                        <span class="cart-item-name">${response[i].name}</span>
+                <div class="cart-row">
+                    <div id="removable">
+                        <div class="cart-items">
+                            <img src=${response[i].image} alt="product_image" class="cart-img">
+                            <span class="cart-item-name">${response[i].name}</span>
+                        </div>
+                        <p class="price">£${response[i].price}</p>
+                        <div class="cart-items-stats">
+                            <input type="number" class="product-qty" value="1">
+                            <button class="removebtn">remove</button>
+                        </div>
                     </div>
-                    <span class="price">${response[i].price}</span>
-                    <div class="cart-items-stats">
-                        <input type="number" class="product-qty" value="2">
-                        <button class="removebtn">remove</button>
-                    </div>
-                    </div>
+                </div>
                 `;
                 $('.cart-row-inner').append(cartItem);
                 i++;
-        }
-        
+                cartLogic(response);
+                updatePrice();
+        }   
+    }
+
+    function cartLogic(counter) {   
+        $('.removebtn').click( () => {
+            let item = $('#removable');
+                item.eq(0).remove();
+                let snoop = counter.find(x=>x._id == id);
+                localStorage.removeItem("cart", snoop);
+                if(counter.length == 0) {
+                    $('.cart-body').toggleClass('cart-dropped');
+                }
+                updatePrice()
+        })
+    }
+
+    function updatePrice() {
+       let amount = $('.price');
+       amount = amount.value;
+       console.log(amount);
+        //    amount = parseFloat(amount.replace('£', '')); 
+       let qty = $('.product-qty');
+       for( let i = 0; i<= qty; i++) {
+           qty = qty[i];
+       }    
     }
 
 })
