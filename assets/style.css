@@ -412,6 +412,7 @@ html {
     text-transform: uppercase;
     font-weight: bold;
     gap: 45px;
+    height: min-content;
 }
 
 .cart-items{

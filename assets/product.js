@@ -144,7 +144,8 @@ $(document).ready(function () {
                                  </div>
                 `;
             $('.product-top-section').append(product);
-            bindEvent(response)
+            bindEvent(response);
+            updatePrice();
         },
         error: (err) => {
             $('.load-fail').html('Could\'nt get product details, try again please', err);
@@ -166,19 +167,21 @@ $(document).ready(function () {
                     cartObj = arr.find(x=>x._id == id);
                     arr.push(cartObj);
                         localStorage.setItem("cart", JSON.stringify(arr));
-                        $('.cart-body').toggleClass('cart-dropped');
+                        $('.cart-body').addClass('cart-dropped');
+                        
+                    $('.counter').html(arr.length -1);
             }else {
                 cartObj = response;
                 arr = [cartObj];
                  localStorage.setItem("cart", JSON.stringify(arr));
+                 $('.cart-body').removeClass('cart-dropped');
+                 $('.counter').html(arr.length -1);
             }
             displayCart(arr);
         });
     }
 
     function displayCart(response) {
-        console.log(response.length);
-        $('.counter').html(response.length);
         
         let i = 0;
         while(i < response.length -1) {
@@ -192,7 +195,7 @@ $(document).ready(function () {
                         </div>
                         <p class="price">£${response[i].price}</p>
                         <div class="cart-items-stats">
-                            <input type="number" class="product-qty" value="1">
+                            <input type="number" class="product-qty" value="0">
                             <button class="removebtn">remove</button>
                         </div>
                     </div>
@@ -207,11 +210,13 @@ $(document).ready(function () {
 
     function cartLogic(counter) {   
         $('.removebtn').click( () => {
+            arr = JSON.parse(cart);
             let item = $('#removable');
                 item.eq(0).remove();
+                $('.counter').html(arr.length -1);
                 let snoop = counter.find(x=>x._id == id);
                 localStorage.removeItem("cart", snoop);
-                if(counter.length == 0) {
+                if(item.length == 1) {
                     $('.cart-body').toggleClass('cart-dropped');
                 }
                 updatePrice()
@@ -219,14 +224,15 @@ $(document).ready(function () {
     }
 
     function updatePrice() {
-       let amount = $('.price');
-       amount = amount.value;
-       console.log(amount);
-        //    amount = parseFloat(amount.replace('£', '')); 
+       let amount = $('.price').html();
+            amount = parseInt(amount.replace('£', ''));
        let qty = $('.product-qty');
-       for( let i = 0; i<= qty; i++) {
-           qty = qty[i];
-       }    
+            $(qty).change(function (e) { 
+               let newQty = $(qty).val();
+               console.log(newQty);
+                    let total = newQty * amount;
+                    $('.items-total').append(total);
+                e.preventDefault();
+            });
     }
-
 })
