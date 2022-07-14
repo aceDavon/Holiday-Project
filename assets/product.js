@@ -6,7 +6,7 @@ $(document).ready(function () {
     let content = $('.cart');
 
     $.ajax({
-        url: `http://159.65.21.42:9000/products`,
+        url: `https://159.65.21.42:9000/products`,
         method: "GET",
         success: (Response) => {
             displayProduct(Response);
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     //Other product display boxes
     $.ajax({
-            url: "http://159.65.21.42:9000/products",
+            url: "https://159.65.21.42:9000/products",
             method: "GET",
             success: function(data) {
                     let i = 0;
@@ -57,7 +57,7 @@ $(document).ready(function () {
                 }    
         });
     $.ajax({
-            url: "http://159.65.21.42:9000/products",
+            url: "https://159.65.21.42:9000/products",
             method: "GET",
             success: function(data) {
                     let i = 0;
@@ -77,7 +77,7 @@ $(document).ready(function () {
         });
 
     $.ajax({
-            url: "http://159.65.21.42:9000/products",
+            url: "https://159.65.21.42:9000/products",
             method: "GET",
             success: function(data) {
                 let i= 0;
@@ -94,7 +94,7 @@ $(document).ready(function () {
         });
 
     $.ajax({
-        url: `http://159.65.21.42:9000/products?id=${id}`,
+        url: `https://159.65.21.42:9000/products?id=${id}`,
         method: "GET",
         success: function (data) {
             let product = "";
